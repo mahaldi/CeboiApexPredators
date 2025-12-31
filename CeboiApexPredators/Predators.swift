@@ -8,6 +8,7 @@
 import Foundation
 
 class Predators {
+    var allApexPredators: [ApexPredator] = []
     var apexPredators: [ApexPredator] = []
     
     init() {
@@ -20,7 +21,8 @@ class Predators {
                 let data  = try Data(contentsOf: url) // try nya ga perlu "?" karna udh ada catch
                 let decoder = JSONDecoder()
                 decoder.keyDecodingStrategy = .convertFromSnakeCase
-                apexPredators = try decoder.decode([ApexPredator].self, from: data)
+                allApexPredators = try decoder.decode([ApexPredator].self, from: data)
+                apexPredators = allApexPredators
             } catch {
                 print("error: \(error)")
             }
@@ -44,6 +46,16 @@ class Predators {
                 predator1.id < predator2.id
             }
             
+        }
+    }
+    
+    func filter(by type: APType) {
+        if type == .all {
+            apexPredators = allApexPredators
+        } else {
+            apexPredators = allApexPredators.filter { predator in
+                predator.type == type
+            }
         }
     }
 }
