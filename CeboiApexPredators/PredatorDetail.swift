@@ -44,7 +44,7 @@ struct PredatorDetail: View {
                     // current location
                     NavigationLink {
                         PredatorMap(position: .camera(MapCamera(centerCoordinate: predator.location, distance: 1000, heading: 250, pitch: 80)))
-                            .navigationTransition(.zoom(sourceID: predator.id, in: namespace))
+                            .navigationTransition(.zoom(sourceID: predator.id, in: namespace)) // cari tau lagi tentang sourceID dan namespace ini karena kalo sourceID nya di harcoded aja sama dengan yang dibawah itu bisa2 aja dan ga ada bedanya
                     } label: {
                         Map(position: $position) {
                             Annotation(predator.name, coordinate: predator.location) {
