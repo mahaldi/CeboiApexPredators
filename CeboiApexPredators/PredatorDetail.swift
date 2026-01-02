@@ -118,7 +118,7 @@ struct PredatorDetail: View {
             .camera(
                 MapCamera(
                     centerCoordinate: predator.location,
-                    distance: 30000
+                    distance: 30000 // jarak kamera ke location
                 )
             ))
         .preferredColorScheme(.dark)
