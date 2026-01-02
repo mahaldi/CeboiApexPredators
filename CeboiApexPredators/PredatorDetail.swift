@@ -28,14 +28,42 @@ struct PredatorDetail: View {
                         .offset(y: 20)
                 }
                 // dino name
-                
-                // current location
-                
-                // appears in
-                
-                // movie moment
-                
-                // link to webpage
+                VStack(alignment: .leading) {
+                    Text(predator.name)
+                        .font(.largeTitle)
+                    
+                    // current location
+                    
+                    // appears in
+                    Text("Appears In:")
+                        .font(.title3)
+                    ForEach(predator.movies, id: \.self) { movie in
+                        Text("•" + movie)
+                    }
+                    
+                    // movie moment
+                    Text("Movie Moment")
+                        .font(.title)
+                        .padding(.top, 15)
+                    
+                    ForEach(predator.movieScenes) { scene in
+                        Text(scene.movie)
+                            .font(.title2)
+                            .padding(.vertical, 1)
+                        Text(scene.sceneDescription)
+                            .padding(.bottom, 15)
+                    }
+                    
+                    // link to webpage
+                    Text("Read More:")
+                        .font(.caption)
+                    Link("Wikipedia", destination: URL(string: predator.link)!)
+                        .font(.caption)
+                        .foregroundStyle(.blue)// make tanda ! karna itu tandanya sudah pasti ada value link nya, kalau ga ada maka app akan crash, makanya dianjurkan untuk menggunakan ?? agar kita memberikan default value link nya
+                }
+                .padding()
+                .padding(.bottom, 50)
+                .frame(width: geo.size.width, alignment: .leading)
                 
             }
         }

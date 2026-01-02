@@ -21,7 +21,7 @@ struct ApexPredator: Decodable, Identifiable {
         name.lowercased().replacingOccurrences(of: " ", with: "") // ubah nama dino di json jadi huruf kecil semua dan yang ada spasinya jadi tanpa spasi, biar sama dengan filename dari gambar dino di assets
     }
     
-    struct MovieScene: Decodable {
+    struct MovieScene: Decodable, Identifiable {
         let id: Int
         let movie: String
         let sceneDescription: String
